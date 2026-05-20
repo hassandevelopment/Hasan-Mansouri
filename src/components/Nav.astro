@@ -1,0 +1,214 @@
+---
+const navLinks = [
+  { label: 'About Us',     href: '/about' },
+  { label: 'Subsidiaries', href: '/subsidiaries' },
+  { label: 'Partners',     href: '/partners' },
+  { label: 'Careers',      href: '/careers' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav
+    id="main-nav"
+    aria-label="Main navigation"
+    style="
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: #4A0A11;
+      border-bottom: 1px solid rgba(184,149,106,0.25);
+      height: 64px;
+      display: flex;
+      align-items: center;
+    "
+  >
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+
+      <!-- Logo -->
+      <a
+        href="/"
+        aria-label="Hasan Mansouri Group — home"
+        style="
+          display: flex;
+          align-items: center;
+          gap: 0.625rem;
+          text-decoration: none;
+          flex-shrink: 0;
+        "
+      >
+        <!-- HM monogram -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" role="img">
+          <rect width="36" height="36" rx="3" fill="#B8956A" fill-opacity="0.15"/>
+          <rect width="36" height="36" rx="3" stroke="#B8956A" stroke-opacity="0.4" stroke-width="1" fill="none"/>
+          <text
+            x="18" y="24"
+            text-anchor="middle"
+            font-family="Georgia, serif"
+            font-size="16"
+            font-weight="700"
+            fill="#B8956A"
+            letter-spacing="1"
+          >HM</text>
+        </svg>
+        <div style="display:flex;flex-direction:column;line-height:1.1;">
+          <span style="
+            font-family: 'Fraunces Variable', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #FAF6F0;
+            letter-spacing: 0.02em;
+          ">Hasan Mansouri</span>
+          <span style="
+            font-family: 'Inter Variable', system-ui, sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #B8956A;
+          ">Group · Est. 1960</span>
+        </div>
+      </a>
+
+      <!-- Desktop links -->
+      <ul
+        id="nav-links"
+        role="list"
+        style="
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          list-style: none;
+          margin: 0; padding: 0;
+        "
+      >
+        {navLinks.map(({ label, href }) => {
+          const isActive = currentPath === href || currentPath.startsWith(href + '/');
+          return (
+            <li>
+              <a
+                href={href}
+                aria-current={isActive ? 'page' : undefined}
+                style={`
+                  font-family: 'Inter Variable', system-ui, sans-serif;
+                  font-size: 0.8125rem;
+                  font-weight: 500;
+                  letter-spacing: 0.03em;
+                  text-decoration: none;
+                  color: ${isActive ? '#FAF6F0' : 'rgba(250,246,240,0.72)'};
+                  border-bottom: 1.5px solid ${isActive ? '#B8956A' : 'transparent'};
+                  padding-bottom: 1px;
+                  transition: color 150ms, border-color 150ms;
+                `}
+              >{label}</a>
+            </li>
+          );
+        })}
+        <li>
+          <a href="/contact" class="btn-primary" style="padding:0.5rem 1.25rem;font-size:0.8125rem;">
+            Contact
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile toggle -->
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open navigation menu"
+        style="
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          cursor: pointer;
+          background: none;
+          border: none;
+          padding: 0.5rem;
+        "
+      >
+        <span style="display:block;width:22px;height:1.5px;background:#FAF6F0;border-radius:2px;transition:all 0.2s;"></span>
+        <span style="display:block;width:22px;height:1.5px;background:#FAF6F0;border-radius:2px;transition:all 0.2s;"></span>
+        <span style="display:block;width:16px;height:1.5px;background:#FAF6F0;border-radius:2px;transition:all 0.2s;"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+    style="
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: #4A0A11;
+      border-bottom: 1px solid rgba(184,149,106,0.2);
+      z-index: 99;
+      padding: 1rem 1.5rem 1.5rem;
+    "
+  >
+    <ul role="list" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;">
+      {navLinks.map(({ label, href }) => (
+        <li style="border-bottom:1px solid rgba(184,149,106,0.12);">
+          <a
+            href={href}
+            style="
+              display: block;
+              padding: 0.875rem 0;
+              font-family: 'Inter Variable', system-ui, sans-serif;
+              font-size: 0.9375rem;
+              font-weight: 500;
+              color: rgba(250,246,240,0.85);
+              text-decoration: none;
+            "
+          >{label}</a>
+        </li>
+      ))}
+      <li style="margin-top:1rem;">
+        <a href="/contact" class="btn-primary" style="width:100%;justify-content:center;">
+          Contact Us
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- Nav spacer -->
+<div style="height:64px;" aria-hidden="true"></div>
+
+<style>
+  @media (max-width: 768px) {
+    #nav-links { display: none !important; }
+    #nav-toggle { display: flex !important; }
+  }
+
+  #main-nav a:hover {
+    color: #FAF6F0 !important;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.style.display === 'block';
+    menu!.style.display = isOpen ? 'none' : 'block';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('main-nav');
+    if (!nav?.contains(e.target as Node) && !menu?.contains(e.target as Node)) {
+      menu!.style.display = 'none';
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

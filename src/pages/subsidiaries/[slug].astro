@@ -1,0 +1,241 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const subsidiaries = await getCollection('subsidiaries');
+  return subsidiaries.map(entry => ({
+    params: { slug: entry.id.replace(/\.md$/, '') },
+    props:  { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { name, sector, tagline, accentColor, established, keyFacts, externalUrl, contact } = entry.data;
+
+const sectorLabel: Record<string, string> = {
+  construction: 'Construction & Engineering',
+  property:     'Property',
+  hospitality:  'Hospitality',
+  services:     'Services',
+};
+
+const allSubs = (await getCollection('subsidiaries'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .filter(s => s.id !== entry.id);
+---
+
+<Base
+  title={name}
+  description={`${name} — ${tagline}`}
+>
+  <Nav slot="nav" />
+
+  <!-- Hero / header with accent colour -->
+  <div style={`background:${accentColor};padding:4rem 0 3rem;`}>
+    <div class="container">
+      <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem;">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+          <li><a href="/" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.55);text-decoration:none;">Home</a></li>
+          <li aria-hidden="true" style="color:rgba(250,246,240,0.3);font-size:0.75rem;">/</li>
+          <li><a href="/subsidiaries" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.55);text-decoration:none;">Subsidiaries</a></li>
+          <li aria-hidden="true" style="color:rgba(250,246,240,0.3);font-size:0.75rem;">/</li>
+          <li aria-current="page" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.85);">{name}</li>
+        </ol>
+      </nav>
+
+      <span style="
+        font-family:'Inter Variable',system-ui,sans-serif;
+        font-size:0.625rem;font-weight:700;
+        letter-spacing:0.18em;text-transform:uppercase;
+        color:rgba(184,149,106,0.85);
+        display:block;margin-bottom:0.625rem;
+      ">{sectorLabel[sector]}</span>
+
+      <h1 style="
+        font-family:'Fraunces Variable',Georgia,serif;
+        font-size:clamp(2rem,5vw,3rem);
+        font-weight:700;color:#FAF6F0;
+        margin-bottom:0.75rem;line-height:1.1;
+      ">{name}</h1>
+
+      <p style="
+        font-family:'Inter Variable',system-ui,sans-serif;
+        font-size:1rem;color:rgba(250,246,240,0.65);
+        max-width:540px;line-height:1.7;
+      ">{tagline}</p>
+
+      {externalUrl && (
+        <a
+          href={externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="
+            display:inline-flex;align-items:center;gap:0.5rem;
+            margin-top:1.5rem;
+            background:#B8956A;color:#2D1F1F;
+            padding:0.625rem 1.5rem;border-radius:3px;
+            font-family:'Inter Variable',system-ui,sans-serif;
+            font-size:0.8125rem;font-weight:700;
+            text-decoration:none;
+          "
+        >
+          Visit website
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      )}
+    </div>
+  </div>
+
+  <!-- Content grid -->
+  <section style="background:#FAF6F0;padding:4.5rem 0;">
+    <div class="container">
+      <div class="sub-content-grid">
+
+        <!-- Sidebar -->
+        <aside>
+          {keyFacts && keyFacts.length > 0 && (
+            <div class="reveal" style="background:#FFFFFF;border-radius:1rem;border:1px solid rgba(110,16,25,0.1);padding:1.75rem;margin-bottom:1.5rem;">
+              <h2 style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.25rem;">Key Facts</h2>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.75rem;">
+                {keyFacts.map(fact => (
+                  <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.6;">{fact}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {established && (
+            <div class="reveal" style="background:#FFFFFF;border-radius:1rem;border:1px solid rgba(110,16,25,0.1);padding:1.75rem;margin-bottom:1.5rem;">
+              <h2 style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:0.75rem;">Established</h2>
+              <div style="font-family:'Fraunces Variable',Georgia,serif;font-size:2rem;font-weight:700;color:#6E1019;">{established}</div>
+            </div>
+          )}
+
+          {contact && (contact.phone || contact.email || contact.address) && (
+            <div class="reveal" style="background:#FFFFFF;border-radius:1rem;border:1px solid rgba(110,16,25,0.1);padding:1.75rem;margin-bottom:1.5rem;">
+              <h2 style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.25rem;">Contact</h2>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                {contact.address && (
+                  <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.6;">{contact.address}</div>
+                )}
+                {contact.phone && (
+                  <a href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`} style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#6E1019;text-decoration:none;font-weight:500;">{contact.phone}</a>
+                )}
+                {contact.email && (
+                  <a href={`mailto:${contact.email}`} style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#6E1019;text-decoration:none;font-weight:500;">{contact.email}</a>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div class="reveal" style="background:#FFFFFF;border-radius:1rem;border:1px solid rgba(110,16,25,0.1);padding:1.75rem;">
+            <h2 style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.25rem;">Group enquiries</h2>
+            <address style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.7;font-style:normal;">
+              P.O. Box 5185, Manama<br>Kingdom of Bahrain
+            </address>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.375rem;">
+              <a href="tel:+97317728144" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#6E1019;text-decoration:none;font-weight:500;">(+973) 1772 8144</a>
+              <a href="mailto:office@hasanmansouri.com" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#6E1019;text-decoration:none;font-weight:500;">office@hasanmansouri.com</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <article class="reveal sub-prose">
+          <Content />
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Other businesses -->
+  <section style="background:#FFFFFF;padding:4rem 0;border-top:1px solid rgba(110,16,25,0.08);">
+    <div class="container">
+      <h2 class="reveal" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.5rem;">Other Group Businesses</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;">
+        {allSubs.slice(0, 6).map((sub, i) => (
+          <a
+            href={`/subsidiaries/${sub.id.replace(/\.md$/, "")}`}
+            class="reveal"
+            style={`
+              background:#FAF6F0;
+              border:1px solid rgba(110,16,25,0.1);
+              border-radius:0.75rem;
+              padding:1.25rem;
+              text-decoration:none;
+              transition:box-shadow 200ms,border-color 200ms;
+              transition-delay:${i * 50}ms;
+              display:block;
+            `}
+          >
+            <div style="font-family:'Fraunces Variable',Georgia,serif;font-size:0.9375rem;font-weight:700;color:#2D1F1F;margin-bottom:0.25rem;line-height:1.3;">{sub.data.name}</div>
+            <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:#B8956A;font-weight:500;">{sectorLabel[sub.data.sector]}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .sub-content-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .sub-prose :global(h2) {
+    font-family: 'Fraunces Variable', Georgia, serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #8B2A2A;
+    margin: 2rem 0 0.75rem;
+    line-height: 1.25;
+  }
+  .sub-prose :global(h3) {
+    font-family: 'Fraunces Variable', Georgia, serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #2D1F1F;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .sub-prose :global(p) {
+    font-family: 'Inter Variable', system-ui, sans-serif;
+    font-size: 0.9375rem;
+    color: #524444;
+    line-height: 1.875;
+    margin-bottom: 1.25rem;
+  }
+  .sub-prose :global(ul) {
+    margin: 0.75rem 0 1.25rem 1.25rem;
+  }
+  .sub-prose :global(li) {
+    font-family: 'Inter Variable', system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #524444;
+    line-height: 1.7;
+    margin-bottom: 0.375rem;
+  }
+  .sub-prose :global(strong) {
+    font-weight: 600;
+    color: #2D1F1F;
+  }
+
+  @media (max-width: 900px) {
+    .sub-content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

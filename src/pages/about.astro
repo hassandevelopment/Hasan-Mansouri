@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="About Us"
+  description="The history of the Hasan Mansouri Group — founded in 1960 at Mina Salman, Bahrain, and grown into one of the Kingdom's most diversified conglomerates."
+>
+  <Nav slot="nav" />
+
+  <!-- Page header -->
+  <div style="background:#4A0A11;padding:4rem 0 3rem;">
+    <div class="container">
+      <span class="section-label">Company</span>
+      <h1 style="
+        font-family:'Fraunces Variable',Georgia,serif;
+        font-size:clamp(2.5rem,5vw,3.5rem);
+        font-weight:700;color:#FAF6F0;
+        margin-bottom:0.75rem;line-height:1.1;
+      ">About the Group</h1>
+      <p style="
+        font-family:'Inter Variable',system-ui,sans-serif;
+        font-size:1rem;
+        color:rgba(250,246,240,0.6);
+        max-width:520px;line-height:1.7;
+      ">65 years of building Bahrain — from a single steel fabrication enterprise to a diversified group of businesses.</p>
+    </div>
+  </div>
+
+  <!-- History -->
+  <section style="background:#FAF6F0;padding:5rem 0;">
+    <div class="container">
+      <div class="about-main-grid">
+
+        <!-- Sidebar -->
+        <aside>
+          <div class="reveal" style="
+            background:#FFFFFF;border-radius:1rem;
+            border:1px solid rgba(110,16,25,0.1);
+            padding:2rem;
+            position:sticky;top:5.5rem;
+          ">
+            <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.25rem;">Leadership</div>
+
+            <div style="margin-bottom:1.5rem;">
+              <div style="font-family:'Fraunces Variable',Georgia,serif;font-size:1rem;font-weight:700;color:#2D1F1F;margin-bottom:0.25rem;">Mr. Hasan Mansouri</div>
+              <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:#B8956A;font-weight:500;">Founder &amp; Chairman</div>
+            </div>
+
+            <div style="width:100%;height:1px;background:rgba(110,16,25,0.08);margin:1.25rem 0;"></div>
+
+            <div>
+              <div style="font-family:'Fraunces Variable',Georgia,serif;font-size:1rem;font-weight:700;color:#2D1F1F;margin-bottom:0.25rem;">Mr. Karim Mansouri</div>
+              <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:#B8956A;font-weight:500;">Managing Director</div>
+            </div>
+
+            <div style="width:100%;height:1px;background:rgba(110,16,25,0.08);margin:1.5rem 0;"></div>
+
+            <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1rem;">Head Office</div>
+            <address style="
+              font-family:'Inter Variable',system-ui,sans-serif;
+              font-size:0.8125rem;color:#524444;
+              line-height:1.7;font-style:normal;
+            ">
+              Bldg 302, Road 4306<br>
+              Block 343, Mina Salman<br>
+              Industrial Area, Entrance 2<br>
+              Kingdom of Bahrain
+            </address>
+            <div style="margin-top:0.75rem;">
+              <a href="tel:+97317728144" style="
+                font-family:'Inter Variable',system-ui,sans-serif;
+                font-size:0.8125rem;color:#6E1019;
+                text-decoration:none;font-weight:500;
+              ">(+973) 1772 8144</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <div>
+          <span class="section-label reveal">Our History</span>
+          <h2 class="reveal reveal-delay-1" style="
+            font-family:'Fraunces Variable',Georgia,serif;
+            font-size:clamp(1.875rem,3vw,2.5rem);
+            font-weight:700;color:#8B2A2A;margin-bottom:1rem;
+          ">One enterprise. Six decades.<br>A Group that built Bahrain.</h2>
+          <span class="divider-gold reveal reveal-delay-1" style="margin-bottom:1.5rem;"></span>
+
+          <div class="prose-body reveal reveal-delay-2">
+            <p>Founded by Mr. Hasan Mansouri, the company started business in 1960 based at Mina Salman. It soon established a high reputation for design, fabrication, and erection of steel frame buildings of the best quality, completed on time.</p>
+            <p>The company's success was built around the experience of its senior management together with a professional and practical approach to all aspects of its business. Inspired by that success, Mr. Hasan Mansouri diversified into heavy equipment hire, transport, construction, commercial and residential properties, portable cabins and timber frame buildings, restaurants, hotels, leisure clubs, health clubs, laundry, and dry cleaning.</p>
+            <p>Today, the Hasan Mansouri Group is one of the leading business houses in Bahrain — holding high reputations, reliability, and a strong identity of its own.</p>
+          </div>
+
+          <!-- Timeline -->
+          <div class="reveal" style="margin:3rem 0;">
+            <h3 style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.5rem;">Key Milestones</h3>
+            <div style="display:flex;flex-direction:column;gap:0;">
+              {[
+                { year: '1960', event: 'Company founded at Mina Salman by Mr. Hasan Mansouri. Steel frame design, fabrication, and erection.' },
+                { year: '1979', event: 'Mansouri Mansions Hotel established in Adliya — four-star hospitality in Manama.' },
+                { year: '1990s', event: 'Expansion into heavy equipment hire, transport, and commercial real estate.' },
+                { year: '2000s', event: 'Growth of leisure and hospitality portfolio including The Country Club and food & beverage.' },
+                { year: '2026', event: '65+ years of operation. Nine active business divisions. One of Bahrain\'s most established private groups.' },
+              ].map(({ year, event }, i) => (
+                <div style={`
+                  display:flex;gap:1.5rem;
+                  padding:1.25rem 0;
+                  border-bottom:1px solid rgba(110,16,25,0.08);
+                  ${i === 0 ? 'border-top:1px solid rgba(110,16,25,0.08);' : ''}
+                `}>
+                  <div style="
+                    font-family:'Fraunces Variable',Georgia,serif;
+                    font-size:0.9375rem;font-weight:700;
+                    color:#6E1019;white-space:nowrap;
+                    min-width:56px;
+                  ">{year}</div>
+                  <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.875rem;color:#524444;line-height:1.7;">{event}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Values -->
+          <div class="reveal">
+            <span class="section-label" style="margin-bottom:1.25rem;">Our Values</span>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;" class="values-grid">
+              {[
+                { title: 'Honesty',     desc: 'Transparent dealings with clients, employees, and partners.' },
+                { title: 'Dedication',  desc: 'Commitment to completing every project on time and to standard.' },
+                { title: 'Reliability', desc: 'A 65-year track record that speaks for itself.' },
+              ].map(({ title, desc }) => (
+                <div style="
+                  background:#FFFFFF;border-radius:0.75rem;
+                  padding:1.5rem;
+                  border-top:2px solid #B8956A;
+                ">
+                  <div style="font-family:'Fraunces Variable',Georgia,serif;font-size:1.0625rem;font-weight:700;color:#2D1F1F;margin-bottom:0.5rem;">{title}</div>
+                  <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.6;">{desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Structure -->
+  <section style="background:#FFFFFF;padding:5rem 0;" aria-label="Group structure">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 3.5rem;">
+        <span class="section-label">Structure</span>
+        <h2 style="font-family:'Fraunces Variable',Georgia,serif;font-size:clamp(1.875rem,3vw,2.5rem);font-weight:700;color:#8B2A2A;margin-bottom:0.75rem;">Group Divisions</h2>
+        <span class="divider-gold" style="margin:0 auto 1rem;"></span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="sectors-grid">
+        {[
+          {
+            label: 'Construction & Engineering',
+            items: ['Hasan Mansouri Engineering — Steel fabrication, 40,000 sq.m facility', 'Hasan Mansouri Transport — Cranes, trailers, heavy equipment hire'],
+            color: '#6E1019',
+          },
+          {
+            label: 'Property',
+            items: ['Hasan Mansouri Properties — Residential & commercial real estate across Bahrain'],
+            color: '#3A2810',
+          },
+          {
+            label: 'Hospitality',
+            items: ["Mansouri Mansions Hotel — Four-star, Adliya", "Tiffany's Restaurant", "The Country Club — 20,000 sq.m leisure facility", "Maguire's Irish Pub"],
+            color: '#8B2A2A',
+          },
+          {
+            label: 'Services',
+            items: ['Hasan Mansouri Sports — Precor fitness equipment distributor', 'Hasan Mansouri Laundry — Commercial laundry, Salmabad'],
+            color: '#1A2E4A',
+          },
+        ].map(({ label, items, color }) => (
+          <div class="reveal" style={`
+            background:#FAF6F0;border-radius:1rem;
+            padding:2rem;
+            border-top:2px solid ${color};
+          `}>
+            <div style={`font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:${color};margin-bottom:1rem;`}>{label}</div>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;">
+              {items.map(item => (
+                <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.6;">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal" style="text-align:center;margin-top:2.5rem;">
+        <a href="/subsidiaries" class="btn-primary">
+          Explore all businesses
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .about-main-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .prose-body p {
+    font-family: 'Inter Variable', system-ui, sans-serif;
+    font-size: 0.9375rem;
+    color: #524444;
+    line-height: 1.875;
+    margin-bottom: 1.25rem;
+  }
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 900px) {
+    .about-main-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .values-grid,
+    .sectors-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

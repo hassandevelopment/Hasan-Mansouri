@@ -1,0 +1,191 @@
+---
+const currentYear = new Date().getFullYear();
+
+const subsidiaryLinks = [
+  { label: 'Engineering',       href: '/subsidiaries/engineering' },
+  { label: 'Transport',         href: '/subsidiaries/transport' },
+  { label: 'Properties',        href: '/subsidiaries/properties' },
+  { label: 'Mansouri Mansions', href: '/subsidiaries/mansouri-mansions' },
+  { label: "Tiffany's",         href: '/subsidiaries/tiffanys' },
+  { label: 'The Country Club',  href: '/subsidiaries/country-club' },
+  { label: "Maguire's",         href: '/subsidiaries/maguires' },
+  { label: 'Sports',            href: '/subsidiaries/sports' },
+  { label: 'Laundry',           href: '/subsidiaries/laundry' },
+];
+
+const companyLinks = [
+  { label: 'About Us',     href: '/about' },
+  { label: 'Subsidiaries', href: '/subsidiaries' },
+  { label: 'Partners',     href: '/partners' },
+  { label: 'Careers',      href: '/careers' },
+  { label: 'Contact',      href: '/contact' },
+];
+---
+
+<footer style="background:#1A0F0F;">
+  <!-- Accent strip -->
+  <div style="height:2px;background:#B8956A;opacity:0.4;"></div>
+
+  <div class="container" style="padding-top:3.5rem;padding-bottom:1.5rem;">
+
+    <!-- Top grid -->
+    <div style="
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.4fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(250,246,240,0.07);
+      margin-bottom: 1.75rem;
+    " class="footer-grid">
+
+      <!-- Brand column -->
+      <div>
+        <div style="
+          font-family: 'Fraunces Variable', Georgia, serif;
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #FAF6F0;
+          margin-bottom: 0.25rem;
+        ">Hasan Mansouri Group</div>
+        <div style="
+          font-family: 'Inter Variable', system-ui, sans-serif;
+          font-size: 0.625rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #B8956A;
+          margin-bottom: 1.25rem;
+        ">Manama, Kingdom of Bahrain</div>
+        <p style="
+          font-family: 'Inter Variable', system-ui, sans-serif;
+          font-size: 0.8125rem;
+          color: rgba(250,246,240,0.45);
+          line-height: 1.75;
+          max-width: 280px;
+        ">
+          Sixty-five years of building Bahrain — across engineering, hospitality, real estate, and beyond.
+        </p>
+
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.625rem;">
+          <a href="tel:+97317728144" style="
+            display:flex;align-items:center;gap:0.5rem;
+            font-family:'Inter Variable',system-ui,sans-serif;
+            font-size:0.8125rem;
+            color:rgba(250,246,240,0.55);
+            text-decoration:none;
+            transition:color 150ms;
+          ">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.12 6.12l.95-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (+973) 1772 8144
+          </a>
+          <a href="mailto:office@hasanmansouri.com" style="
+            display:flex;align-items:center;gap:0.5rem;
+            font-family:'Inter Variable',system-ui,sans-serif;
+            font-size:0.8125rem;
+            color:rgba(250,246,240,0.55);
+            text-decoration:none;
+            transition:color 150ms;
+          ">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            office@hasanmansouri.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Company links -->
+      <div>
+        <h3 style="
+          font-family:'Inter Variable',system-ui,sans-serif;
+          font-size:0.625rem;
+          font-weight:700;
+          letter-spacing:0.15em;
+          text-transform:uppercase;
+          color:#B8956A;
+          margin-bottom:1.25rem;
+        ">Company</h3>
+        <ul role="list" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.625rem;">
+          {companyLinks.map(({ label, href }) => (
+            <li>
+              <a href={href} style="
+                font-family:'Inter Variable',system-ui,sans-serif;
+                font-size:0.8125rem;
+                color:rgba(250,246,240,0.5);
+                text-decoration:none;
+                transition:color 150ms;
+              ">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Subsidiaries links -->
+      <div>
+        <h3 style="
+          font-family:'Inter Variable',system-ui,sans-serif;
+          font-size:0.625rem;
+          font-weight:700;
+          letter-spacing:0.15em;
+          text-transform:uppercase;
+          color:#B8956A;
+          margin-bottom:1.25rem;
+        ">Our Businesses</h3>
+        <ul role="list" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;">
+          {subsidiaryLinks.map(({ label, href }) => (
+            <li>
+              <a href={href} style="
+                font-family:'Inter Variable',system-ui,sans-serif;
+                font-size:0.8125rem;
+                color:rgba(250,246,240,0.5);
+                text-decoration:none;
+                transition:color 150ms;
+              ">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+      <p style="
+        font-family:'Inter Variable',system-ui,sans-serif;
+        font-size:0.75rem;
+        color:rgba(250,246,240,0.25);
+        margin:0;
+      ">
+        &copy; {currentYear} Hasan Mansouri Group. All rights reserved. Manama, Kingdom of Bahrain.
+      </p>
+      <p style="
+        font-family:'Inter Variable',system-ui,sans-serif;
+        font-size:0.75rem;
+        color:rgba(250,246,240,0.15);
+        margin:0;
+      ">
+        P.O. Box 5185, Manama · (+973) 1772 8144
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer-grid {
+    grid-template-columns: 1.6fr 1fr 1.4fr;
+  }
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .footer-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+  }
+
+  footer a:hover {
+    color: #B8956A !important;
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Careers"
+  description="Join the Hasan Mansouri Group. Send your CV to our team — we welcome enquiries from dedicated professionals across all our business divisions."
+>
+  <Nav slot="nav" />
+
+  <div style="background:#4A0A11;padding:4rem 0 3rem;">
+    <div class="container">
+      <span class="section-label">Work with Us</span>
+      <h1 style="font-family:'Fraunces Variable',Georgia,serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;color:#FAF6F0;margin-bottom:0.75rem;line-height:1.1;">Careers</h1>
+      <p style="font-family:'Inter Variable',system-ui,sans-serif;font-size:1rem;color:rgba(250,246,240,0.6);max-width:520px;line-height:1.7;">Join one of Bahrain's most established business groups. We welcome enquiries from professionals across all disciplines.</p>
+    </div>
+  </div>
+
+  <section style="background:#FAF6F0;padding:5rem 0;">
+    <div class="container">
+      <div class="careers-grid">
+
+        <!-- Steps -->
+        <div>
+          <span class="section-label reveal">How to Apply</span>
+          <h2 class="reveal reveal-delay-1" style="font-family:'Fraunces Variable',Georgia,serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;color:#8B2A2A;margin-bottom:1rem;">Send your CV directly to the Group.</h2>
+          <span class="divider-gold reveal reveal-delay-1" style="margin-bottom:1.5rem;"></span>
+
+          <div style="display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2.5rem;">
+            {[
+              { num: '01', title: 'Prepare your CV',        desc: 'Include your professional experience, qualifications, and the specific role or division you are interested in.' },
+              { num: '02', title: 'Write a brief note',      desc: 'Tell us why you want to join the Group and which of our nine business divisions aligns with your background.' },
+              { num: '03', title: 'Send your application',   desc: 'Email your CV directly to our recruitment team. We review every application and will be in touch if a suitable role arises.' },
+            ].map(({ num, title, desc }) => (
+              <div class="reveal" style="
+                background:#FFFFFF;border-radius:0.75rem;
+                padding:1.5rem;
+                border-left:2px solid #B8956A;
+                display:flex;gap:1.25rem;align-items:flex-start;
+              ">
+                <div style="
+                  font-family:'Fraunces Variable',Georgia,serif;
+                  font-size:1.5rem;font-weight:700;
+                  color:rgba(184,149,106,0.5);
+                  line-height:1;flex-shrink:0;
+                  min-width:36px;
+                ">{num}</div>
+                <div>
+                  <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.9375rem;font-weight:600;color:#2D1F1F;margin-bottom:0.375rem;">{title}</div>
+                  <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.65;">{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="reveal">
+            <a href="mailto:employment@hasanmansouri.com" class="btn-primary" style="display:inline-flex;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Send your CV
+            </a>
+            <div style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;margin-top:0.75rem;">
+              <a href="mailto:employment@hasanmansouri.com" style="color:#6E1019;font-weight:500;text-decoration:none;">employment@hasanmansouri.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divisions we hire for -->
+        <div>
+          <div class="reveal" style="background:#4A0A11;border-radius:1rem;padding:2rem;margin-bottom:1.5rem;">
+            <h3 style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B8956A;margin-bottom:1.25rem;">Divisions we hire across</h3>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.625rem;">
+              {[
+                'Hasan Mansouri Engineering',
+                'Hasan Mansouri Transport',
+                'Hasan Mansouri Properties',
+                'Mansouri Mansions Hotel',
+                'The Country Club',
+                "Tiffany's Restaurant",
+                "Maguire's Irish Pub",
+                'Hasan Mansouri Sports',
+                'Hasan Mansouri Laundry',
+              ].map(name => (
+                <li style="display:flex;align-items:center;gap:0.625rem;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:rgba(250,246,240,0.7);">{name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="reveal" style="background:#FFFFFF;border-radius:1rem;border:1px solid rgba(110,16,25,0.1);padding:1.75rem;">
+            <h3 style="font-family:'Fraunces Variable',Georgia,serif;font-size:1rem;font-weight:700;color:#2D1F1F;margin-bottom:0.5rem;">No current openings?</h3>
+            <p style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.65;margin-bottom:0;">
+              We encourage speculative applications. If your experience matches one of our divisions, we will keep your CV on file and contact you when a suitable opportunity arises.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .careers-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .careers-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
