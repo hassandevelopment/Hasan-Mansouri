@@ -68,7 +68,7 @@ const sectors = [
                       flex-shrink:0;
                     `}>
                       <img
-                        src={sub.data.heroImage}
+                        src={`${base}${sub.data.heroImage}`}
                         alt=""
                         loading="lazy"
                         decoding="async"
@@ -101,7 +101,7 @@ const sectors = [
 
                     {sub.data.logoImage ? (
                       <img
-                        src={sub.data.logoImage}
+                        src={`${base}${sub.data.logoImage}`}
                         alt={sub.data.name}
                         loading="lazy"
                         decoding="async"

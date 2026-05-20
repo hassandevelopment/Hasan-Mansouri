@@ -39,7 +39,7 @@ const allSubs = (await getCollection('subsidiaries'))
   <div style={`background:${accentColor};padding:4rem 0 3rem;position:relative;overflow:hidden;`}>
     {heroImage && (
       <img
-        src={heroImage}
+        src={`${base}${heroImage}`}
         alt=""
         aria-hidden="true"
         loading="eager"
@@ -74,7 +74,7 @@ const allSubs = (await getCollection('subsidiaries'))
 
       {logoImage ? (
         <img
-          src={logoImage}
+          src={`${base}${logoImage}`}
           alt={name}
           loading="eager"
           decoding="async"
@@ -215,7 +215,7 @@ const allSubs = (await getCollection('subsidiaries'))
               `}
             >
               <img
-                src={photo.src}
+                src={`${base}${photo.src}`}
                 alt={photo.alt}
                 loading="lazy"
                 decoding="async"
