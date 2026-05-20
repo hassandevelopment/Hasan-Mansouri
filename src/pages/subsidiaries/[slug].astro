@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { name, sector, tagline, accentColor, established, keyFacts, externalUrl, contact, heroImage, photos, logoImage } = entry.data;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const sectorLabel: Record<string, string> = {
   construction: 'Construction & Engineering',
@@ -55,9 +56,9 @@ const allSubs = (await getCollection('subsidiaries'))
     <div class="container" style="position:relative;z-index:1;">
       <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem;">
         <ol style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
-          <li><a href="/" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.55);text-decoration:none;">Home</a></li>
+          <li><a href={`${base}/`} style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.55);text-decoration:none;">Home</a></li>
           <li aria-hidden="true" style="color:rgba(250,246,240,0.3);font-size:0.75rem;">/</li>
-          <li><a href="/subsidiaries" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.55);text-decoration:none;">Subsidiaries</a></li>
+          <li><a href={`${base}/subsidiaries`} style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.55);text-decoration:none;">Subsidiaries</a></li>
           <li aria-hidden="true" style="color:rgba(250,246,240,0.3);font-size:0.75rem;">/</li>
           <li aria-current="page" style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:rgba(250,246,240,0.85);">{name}</li>
         </ol>
@@ -236,7 +237,7 @@ const allSubs = (await getCollection('subsidiaries'))
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;">
         {allSubs.slice(0, 6).map((sub, i) => (
           <a
-            href={`/subsidiaries/${sub.id.replace(/\.md$/, "")}`}
+            href={`${base}/subsidiaries/${sub.id.replace(/\.md$/, "")}`}
             class="reveal"
             style={`
               background:#FAF6F0;

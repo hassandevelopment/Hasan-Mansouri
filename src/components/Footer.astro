@@ -1,24 +1,25 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const subsidiaryLinks = [
-  { label: 'Engineering',       href: '/subsidiaries/engineering' },
-  { label: 'Transport',         href: '/subsidiaries/transport' },
-  { label: 'Properties',        href: '/subsidiaries/properties' },
-  { label: 'Mansouri Mansions', href: '/subsidiaries/mansouri-mansions' },
-  { label: "Tiffany's",         href: '/subsidiaries/tiffanys' },
-  { label: 'The Country Club',  href: '/subsidiaries/country-club' },
-  { label: "Maguire's",         href: '/subsidiaries/maguires' },
-  { label: 'Sports',            href: '/subsidiaries/sports' },
-  { label: 'Laundry',           href: '/subsidiaries/laundry' },
+  { label: 'Engineering',       href: `${base}/subsidiaries/engineering` },
+  { label: 'Transport',         href: `${base}/subsidiaries/transport` },
+  { label: 'Properties',        href: `${base}/subsidiaries/properties` },
+  { label: 'Mansouri Mansions', href: `${base}/subsidiaries/mansouri-mansions` },
+  { label: "Tiffany's",         href: `${base}/subsidiaries/tiffanys` },
+  { label: 'The Country Club',  href: `${base}/subsidiaries/country-club` },
+  { label: "Maguire's",         href: `${base}/subsidiaries/maguires` },
+  { label: 'Sports',            href: `${base}/subsidiaries/sports` },
+  { label: 'Laundry',           href: `${base}/subsidiaries/laundry` },
 ];
 
 const companyLinks = [
-  { label: 'About Us',     href: '/about' },
-  { label: 'Subsidiaries', href: '/subsidiaries' },
-  { label: 'Partners',     href: '/partners' },
-  { label: 'Careers',      href: '/careers' },
-  { label: 'Contact',      href: '/contact' },
+  { label: 'About Us',     href: `${base}/about` },
+  { label: 'Subsidiaries', href: `${base}/subsidiaries` },
+  { label: 'Partners',     href: `${base}/partners` },
+  { label: 'Careers',      href: `${base}/careers` },
+  { label: 'Contact',      href: `${base}/contact` },
 ];
 ---
 

@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 const subsidiaries = (await getCollection('subsidiaries')).sort(
   (a, b) => a.data.order - b.data.order
 );
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const sectors = [
   { key: 'construction', label: 'Construction & Engineering', desc: "Steel fabrication and heavy equipment solutions for Bahrain's industrial sector." },
@@ -54,7 +55,7 @@ const sectors = [
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
               {items.map((sub, i) => (
                 <a
-                  href={`/subsidiaries/${sub.id.replace(/\.md$/, "")}`}
+                  href={`${base}/subsidiaries/${sub.id.replace(/\.md$/, "")}`}
                   class="card reveal"
                   style={`text-decoration:none;display:flex;flex-direction:column;padding:0;overflow:hidden;transition-delay:${i * 70}ms;`}
                 >

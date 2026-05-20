@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base
@@ -201,7 +202,7 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <div class="reveal" style="text-align:center;margin-top:2.5rem;">
-        <a href="/subsidiaries" class="btn-primary">
+        <a href={`${base}/subsidiaries`} class="btn-primary">
           Explore all businesses
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>

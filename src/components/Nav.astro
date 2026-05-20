@@ -1,9 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const navLinks = [
-  { label: 'About Us',     href: '/about' },
-  { label: 'Subsidiaries', href: '/subsidiaries' },
-  { label: 'Partners',     href: '/partners' },
-  { label: 'Careers',      href: '/careers' },
+  { label: 'About Us',     href: `${base}/about` },
+  { label: 'Subsidiaries', href: `${base}/subsidiaries` },
+  { label: 'Partners',     href: `${base}/partners` },
+  { label: 'Careers',      href: `${base}/careers` },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -28,7 +30,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- Logo -->
       <a
-        href="/"
+        href={`${base}/`}
         aria-label="Hasan Mansouri Group — home"
         style="
           display: flex;
@@ -39,7 +41,7 @@ const currentPath = Astro.url.pathname;
         "
       >
         <img
-          src="/images/logos/hm-logo.jpg"
+          src={`${base}/images/logos/hm-logo.jpg`}
           alt="Hasan Mansouri Group"
           width="120"
           height="44"
@@ -87,7 +89,7 @@ const currentPath = Astro.url.pathname;
           );
         })}
         <li>
-          <a href="/contact" class="btn-primary" style="padding:0.5rem 1.25rem;font-size:0.8125rem;">
+          <a href={`${base}/contact`} class="btn-primary" style="padding:0.5rem 1.25rem;font-size:0.8125rem;">
             Contact
           </a>
         </li>
@@ -151,7 +153,7 @@ const currentPath = Astro.url.pathname;
         </li>
       ))}
       <li style="margin-top:1rem;">
-        <a href="/contact" class="btn-primary" style="width:100%;justify-content:center;">
+        <a href={`${base}/contact`} class="btn-primary" style="width:100%;justify-content:center;">
           Contact Us
         </a>
       </li>
