@@ -4,7 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://hasanmansouri.com',
+  site: 'https://hassandevelopment.github.io',
+  base: '/Hasan-Mansouri',
   integrations: [
     sitemap(),
     react(),
