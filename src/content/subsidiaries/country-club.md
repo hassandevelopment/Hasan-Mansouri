@@ -3,10 +3,17 @@ name: "The Country Club"
 sector: "hospitality"
 tagline: "20,000 sq.m of landscaped leisure, 15 minutes from Manama."
 accentColor: "#1A3820"
+logoImage: "/images/logos/country-club-logo.gif"
+heroImage: "/images/subsidiaries/country-club/img3.gif"
 keyFacts:
   - "20,000 sq.m of shaded, landscaped gardens"
   - "Tennis, racquetball, and squash courts"
   - "Country Stables and temperature-controlled swimming pool"
+photos:
+  - src: "/images/subsidiaries/country-club/img2.gif"
+    alt: "The Country Club Bahrain gardens and facilities"
+  - src: "/images/subsidiaries/country-club/img3.gif"
+    alt: "Country Club outdoor recreation area"
 contact:
   phone: "(+973) 1759 3593"
   email: "brenigan@batelco.com.bh"

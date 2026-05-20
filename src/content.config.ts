@@ -17,6 +17,9 @@ const subsidiaries = defineCollection({
       address: z.string().optional(),
     }).optional(),
     order:        z.number().default(99),
+    heroImage:    z.string().optional(),
+    photos:       z.array(z.object({ src: z.string(), alt: z.string() })).optional(),
+    logoImage:    z.string().optional(),
   }),
 });
 

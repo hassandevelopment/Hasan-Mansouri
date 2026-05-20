@@ -56,39 +56,81 @@ const sectors = [
                 <a
                   href={`/subsidiaries/${sub.id.replace(/\.md$/, "")}`}
                   class="card reveal"
-                  style={`text-decoration:none;display:flex;flex-direction:column;transition-delay:${i * 70}ms;`}
+                  style={`text-decoration:none;display:flex;flex-direction:column;padding:0;overflow:hidden;transition-delay:${i * 70}ms;`}
                 >
-                  <div style="
-                    display:inline-flex;
-                    align-items:center;
-                    gap:0.5rem;
-                    background:rgba(110,16,25,0.07);
-                    color:#6E1019;
-                    font-family:'Inter Variable',system-ui,sans-serif;
-                    font-size:0.625rem;font-weight:700;
-                    letter-spacing:0.14em;text-transform:uppercase;
-                    padding:0.375rem 0.75rem;border-radius:2px;
-                    margin-bottom:1rem;
-                    width:fit-content;
-                  ">{label}</div>
-
-                  <h3 style="font-family:'Fraunces Variable',Georgia,serif;font-size:1.125rem;font-weight:700;color:#2D1F1F;margin-bottom:0.5rem;line-height:1.3;">{sub.data.name}</h3>
-                  <p style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.7;flex:1;">{sub.data.tagline}</p>
-
-                  {sub.data.keyFacts && sub.data.keyFacts.length > 0 && (
-                    <ul style="list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:0.375rem;">
-                      {sub.data.keyFacts.slice(0, 2).map(fact => (
-                        <li style="display:flex;align-items:flex-start;gap:0.5rem;">
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:#524444;line-height:1.5;">{fact}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {sub.data.heroImage ? (
+                    <div style={`
+                      position:relative;
+                      height:160px;
+                      overflow:hidden;
+                      background:${sub.data.accentColor || '#6E1019'};
+                      flex-shrink:0;
+                    `}>
+                      <img
+                        src={sub.data.heroImage}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.75;transition:transform 600ms ease,opacity 300ms;"
+                      />
+                      <div style={`position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,${sub.data.accentColor || '#6E1019'} 100%);opacity:0.6;`}></div>
+                    </div>
+                  ) : (
+                    <div style={`
+                      height:8px;
+                      background:${sub.data.accentColor || '#6E1019'};
+                      flex-shrink:0;
+                    `}></div>
                   )}
 
-                  <div style="display:flex;align-items:center;gap:0.375rem;margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(110,16,25,0.08);font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;font-weight:600;color:#6E1019;">
-                    View details
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+                    <div style="
+                      display:inline-flex;
+                      align-items:center;
+                      gap:0.5rem;
+                      background:rgba(110,16,25,0.07);
+                      color:#6E1019;
+                      font-family:'Inter Variable',system-ui,sans-serif;
+                      font-size:0.625rem;font-weight:700;
+                      letter-spacing:0.14em;text-transform:uppercase;
+                      padding:0.375rem 0.75rem;border-radius:2px;
+                      margin-bottom:1rem;
+                      width:fit-content;
+                    ">{label}</div>
+
+                    {sub.data.logoImage ? (
+                      <img
+                        src={sub.data.logoImage}
+                        alt={sub.data.name}
+                        loading="lazy"
+                        decoding="async"
+                        style="height:36px;width:auto;max-width:160px;object-fit:contain;margin-bottom:0.75rem;display:block;"
+                      />
+                    ) : (
+                      <h3 style="font-family:'Fraunces Variable',Georgia,serif;font-size:1.125rem;font-weight:700;color:#2D1F1F;margin-bottom:0.5rem;line-height:1.3;">{sub.data.name}</h3>
+                    )}
+
+                    {sub.data.logoImage && (
+                      <h3 style="font-family:'Fraunces Variable',Georgia,serif;font-size:1.125rem;font-weight:700;color:#2D1F1F;margin-bottom:0.5rem;line-height:1.3;font-size:0;height:0;overflow:hidden;">{sub.data.name}</h3>
+                    )}
+
+                    <p style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.8125rem;color:#524444;line-height:1.7;flex:1;">{sub.data.tagline}</p>
+
+                    {sub.data.keyFacts && sub.data.keyFacts.length > 0 && (
+                      <ul style="list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:0.375rem;">
+                        {sub.data.keyFacts.slice(0, 2).map(fact => (
+                          <li style="display:flex;align-items:flex-start;gap:0.5rem;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span style="font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;color:#524444;line-height:1.5;">{fact}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div style="display:flex;align-items:center;gap:0.375rem;margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(110,16,25,0.08);font-family:'Inter Variable',system-ui,sans-serif;font-size:0.75rem;font-weight:600;color:#6E1019;">
+                      View details
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
                   </div>
                 </a>
               ))}
