@@ -48,7 +48,7 @@ const allSubs = (await getCollection('subsidiaries'))
           position:absolute;inset:0;
           width:100%;height:100%;
           object-fit:cover;object-position:center;
-          opacity:0.22;
+          opacity:0.35;
           pointer-events:none;
         "
       />
@@ -72,37 +72,29 @@ const allSubs = (await getCollection('subsidiaries'))
         display:block;margin-bottom:0.625rem;
       ">{sectorLabel[sector]}</span>
 
-      {logoImage ? (
-        <img
-          src={`${base}${logoImage}`}
-          alt={name}
-          loading="eager"
-          decoding="async"
-          style="
-            height:auto;max-height:80px;max-width:240px;
-            width:auto;object-fit:contain;
-            display:block;margin-bottom:1rem;
-            filter:brightness(0) invert(1);
-            opacity:0.92;
-          "
-        />
-      ) : (
-        <h1 style="
-          font-family:'Fraunces Variable',Georgia,serif;
-          font-size:clamp(2rem,5vw,3rem);
-          font-weight:700;color:#FAF6F0;
-          margin-bottom:0.75rem;line-height:1.1;
-        ">{name}</h1>
-      )}
+      <h1 style="
+        font-family:'Fraunces Variable',Georgia,serif;
+        font-size:clamp(2rem,5vw,3rem);
+        font-weight:700;color:#FAF6F0;
+        margin-bottom:0.75rem;line-height:1.1;
+      ">{name}</h1>
 
       {logoImage && (
-        <h1 style="
-          font-family:'Fraunces Variable',Georgia,serif;
-          font-size:clamp(1.5rem,3vw,2rem);
-          font-weight:700;color:#FAF6F0;
-          margin-bottom:0.75rem;line-height:1.1;
-          clip:rect(0,0,0,0);position:absolute;
-        ">{name}</h1>
+        <div style="
+          display:inline-flex;
+          background:rgba(250,246,240,0.92);
+          border-radius:6px;
+          padding:0.5rem 1rem;
+          margin-bottom:1rem;
+        ">
+          <img
+            src={`${base}${logoImage}`}
+            alt={`${name} logo`}
+            loading="eager"
+            decoding="async"
+            style="height:40px;width:auto;object-fit:contain;display:block;"
+          />
+        </div>
       )}
 
       <p style="
